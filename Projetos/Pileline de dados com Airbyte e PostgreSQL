@@ -1,7 +1,7 @@
 *** Nesse projeto será construído um pipeline de dados com fonte de arquivos na máquina local e movimentação  com o Airbyte para levar ao SGBD (PostgreSQL) ***
 
 
-**Ferramentas usadas nesse lab**: 
+**Ferramentas usadas nesse lab** : 
 Docker, Airbyte, PostgreSQL e PgAdmin.
 
 
