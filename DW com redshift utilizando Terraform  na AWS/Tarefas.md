@@ -419,9 +419,9 @@ provider "aws" {
 
 ### redshift.tf:
 
-```
-#Configura a Redshift VPC
 
+#Configura a Redshift VPC
+```
 resource "aws_vpc" "redshift_vpc" {
   cidr_block = "10.0.0.0/16"
 
@@ -482,7 +482,7 @@ resource "aws_route_table_association" "redshift_route_table_association" {
 ```
 
 
-#onfigura Um Grupo de Segurança de Acesso ao Data Warehouse com Redshift
+#Configura Um Grupo de Segurança de Acesso ao Data Warehouse com Redshift
 ```
 resource "aws_security_group" "redshift_sg" {
   name        = "redshift_sg"
