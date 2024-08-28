@@ -1,4 +1,4 @@
-# ***Será construído um pipeline de dados com Apache Airflow para leitura de arquivos da máquina local e carga de dados no PostgreSQL***
+# ***Pipeline de dados com Apache Airflow para leitura de arquivos da máquina local e carga de dados no PostgreSQL***
 
 
 ## **Ferramentas**:
@@ -26,7 +26,7 @@ Schema: lab6
 ### Criar a conncection no Airflow
 Name: Lab6DW
 
-### Criação de tabelas:
+### Criar as estruturas das tabelas:
 Dentro do schema, executar os scripts SQL:
 ```
 
