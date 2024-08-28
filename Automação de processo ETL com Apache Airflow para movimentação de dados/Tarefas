@@ -5,19 +5,26 @@ Docker, PostgreSQL, pgAdmin, Apache Airflow e Anaconda.
 
 **Resumo**: 
 * Criar a estrutura das tabelas direto no DW com SQL;
-* Criar a connection no Airflow (Lab6DW);
+* Criar a connection no Airflow;
 * Criar a DAG;
 * Inserir a DAG dentro da pasta raiz na máquina local do Airflow;
 * Inserir os arquivos csv na máquina local dentro da pasta raiz (AIRFLOW > dags > dados);
 * Disparar a DAG.
 
 
+**Comandos**:
+#Configurar o Pgadmin:
+Acessar o pgadmin e criar um banco de dados e schema com os nomes abaixo:
 Name SGBD Pgadmin: DW-Lab 6
 Schema: lab6
-Container docker: dbdsa (mesmo banco de dados no lab 5)
 
-**Comandos**:
-# Criação de tabelas:
+#Criar a conncection no Airflow
+Name: Lab6DW
+
+#Criação de tabelas:
+Dentro do schema, executar os scripts SQL:
+```
+
 CREATE TABLE lab6.DIM_CLIENTE
 (
     id_cliente int NOT NULL,
@@ -92,15 +99,17 @@ CREATE TABLE lab6.TB_FATO
     PRIMARY KEY (id_cliente, id_transportadora, id_deposito, id_entrega, id_pagamento, id_frete, id_data)
 );
 
+```
 
 Obs: 
 Como estamos usando Docker, se faz necessário apontar o mapeamento de volumes para os arquivos das tabelas dimensões e fato no módulo python
 Ex: "op_kwargs = {'params': {'csv_file_path': '/opt/airflow/dags/dados/DIM_CLIENTE.csv'}}"
-/opt/airflow/dags/dados = É a pasta criada no diretório raiz
+/opt/airflow/dags/dados = É a pasta criada no diretório raiz da máquina local
 
 
 # Job ETL - Apache Airflow (etl_dw_v5)
-# Imports
+```
+#Imports
 import csv
 import airflow
 import time
@@ -502,6 +511,8 @@ tarefa_trunca_dim_data = PostgresOperator(task_id = 'tarefa_trunca_dim_data', po
 tarefa_trunca_dim_transportadora = PostgresOperator(task_id = 'tarefa_trunca_dim_transportadora', postgres_conn_id = 'Lab6DW', sql = "TRUNCATE TABLE lab6.DIM_TRANSPORTADORA CASCADE", dag = dag_lab6_dsa)
 tarefa_trunca_dim_entrega = PostgresOperator(task_id = 'tarefa_trunca_dim_entrega', postgres_conn_id = 'Lab6DW', sql = "TRUNCATE TABLE lab6.DIM_ENTREGA CASCADE", dag = dag_lab6_dsa)
 tarefa_trunca_dim_deposito = PostgresOperator(task_id = 'tarefa_trunca_dim_deposito', postgres_conn_id = 'Lab6DW', sql = "TRUNCATE TABLE lab6.DIM_DEPOSITO CASCADE", dag = dag_lab6_dsa)
+
+```
 
 # Upstream
 tarefa_trunca_tb_fato >> tarefa_trunca_dim_cliente >> tarefa_trunca_dim_pagamento >> tarefa_trunca_dim_frete >> tarefa_trunca_dim_data >> tarefa_trunca_dim_transportadora >> tarefa_trunca_dim_entrega >> tarefa_trunca_dim_deposito >> tarefa_carrega_dados_clientes >> tarefa_carrega_dados_transportadora >> tarefa_carrega_dados_deposito >> tarefa_carrega_dados_entrega >> tarefa_carrega_dados_frete >> tarefa_carrega_dados_pagamento >> tarefa_carrega_dados_data >> tarefa_carrega_dados_fatos
