@@ -15,7 +15,7 @@ Docker, Airbyte, PostgreSQL e PgAdmin.
 ## **Comandos**:
 ### Criar imagem e container do Airbyte no Docker
 Acessar o terminal e instalar o git: https://git-scm.com/download/win para Windows
-
+ 
 Executar os comandos abaixo:
 git clone https://github.com/airbytehq/airbyte.git
 cd airbyte
