@@ -13,7 +13,7 @@ Docker, Terraform, AWS Redshift e AWS CLI.
 * Criar container docker para máquina cliente;
 * Instalar AWS CLI e Terraform no container;
 * Criar o arquivo Terraform no container;
-* Executar o terraform, aplicar infraestrutura e destrui (init, apply e destroy).
+* Executar o terraform, aplicar infraestrutura e destruir (init, apply e destroy).
 
 
 
@@ -99,6 +99,7 @@ apt-get install terraform
 terraform -version
 
 Criar pasta no container Docker com o nome do projeto que está o arquivo main.tf:
+
 Nesse caso: Container dsa_projeto2 > mkdir terraform-aws-hcl na pasta raiz do container (~)
 
 
@@ -398,7 +399,7 @@ touch redshift_role.tf
 
 
 
-### 7- Edite cada um dos arquivos com o mesmo conteúdo dos arquivos fornecidos a você (acompanhe as aulas em vídeo sempre com o máximo de atenção).
+### 7- Edite cada um dos arquivos:
 
 nano provider.tf
 
@@ -406,17 +407,18 @@ nano redshift.tf
 
 nano redshift_role.tf
 
+
+### provider.tf:
 ```
-provider:
 provider "aws" {
   region = "us-east-2"
 }
-
-redshift.tf:
 ```
 
 
-### Configura a Redshift VPC
+### redshift.tf:
+```
+#Configura a Redshift VPC
 ```
 resource "aws_vpc" "redshift_vpc" {
   cidr_block = "10.0.0.0/16"
@@ -428,7 +430,7 @@ resource "aws_vpc" "redshift_vpc" {
 ```
 
 
-### Configura a Redshift Subnet
+#Configura a Redshift Subnet
 ```
 resource "aws_subnet" "redshift_subnet" {
   cidr_block = "10.0.1.0/24"
@@ -440,7 +442,7 @@ resource "aws_subnet" "redshift_subnet" {
 }
 ```
 
-### Configura um Gateway da Internet e Anexa a VPC
+#Configura um Gateway da Internet e Anexa a VPC
 ```
 resource "aws_internet_gateway" "redshift_igw" {
   vpc_id = aws_vpc.redshift_vpc.id
@@ -452,7 +454,7 @@ resource "aws_internet_gateway" "redshift_igw" {
 ```
 
 
-### Configura Uma Tabela de Roteamento
+#Configura Uma Tabela de Roteamento
 ```
 resource "aws_route_table" "redshift_route_table" {
   vpc_id = aws_vpc.redshift_vpc.id
@@ -469,7 +471,7 @@ resource "aws_route_table" "redshift_route_table" {
 ```
 
 
-### Associa a Tabela de Roteamento à Subnet
+#Associa a Tabela de Roteamento à Subnet
 ```
 resource "aws_route_table_association" "redshift_route_table_association" {
   subnet_id      = aws_subnet.redshift_subnet.id
@@ -478,7 +480,7 @@ resource "aws_route_table_association" "redshift_route_table_association" {
 ```
 
 
-### Configura Um Grupo de Segurança de Acesso ao Data Warehouse com Redshift
+#onfigura Um Grupo de Segurança de Acesso ao Data Warehouse com Redshift
 ```
 resource "aws_security_group" "redshift_sg" {
   name        = "redshift_sg"
@@ -499,7 +501,7 @@ resource "aws_security_group" "redshift_sg" {
 ```
 
 
-### Configura Um Grupo de Subnets Redshift
+#Configura Um Grupo de Subnets Redshift
 ```
 resource "aws_redshift_subnet_group" "redshift_subnet_group" {
   name       = "redshift-subnet-group"
@@ -512,7 +514,7 @@ resource "aws_redshift_subnet_group" "redshift_subnet_group" {
 
 ```
 
-### Configura Um Cluster Redshift 
+#Configura Um Cluster Redshift 
 ```
 resource "aws_redshift_cluster" "redshift_cluster" {
   cluster_identifier = "redshift-cluster"
@@ -529,9 +531,13 @@ resource "aws_redshift_cluster" "redshift_cluster" {
   skip_final_snapshot = true
 }
 
+```
 
+### Redshift_role:
 
 redshift_role: (IAM é o privilégio de acesso entre serviços distintos da AWS)
+
+```
 resource "aws_iam_role" "redshift_role" {
   name = "RedshiftS3AccessRole"
 
@@ -680,8 +686,12 @@ CSV;
 
 ```
 
-### 13- Copie o endpoint do seu cluster Redshift e ajuste o comando abaixo e então execute no terminal do container dentro da pasta etapa2. Digite a senha (dsaS9curePassw2rd) quando solicitado.
+### 13- Copie o endpoint do seu cluster Redshift e ajuste o comando abaixo e então execute no terminal do container dentro da pasta etapa2. 
+
+Digite a senha (dsaS9curePassw2rd) quando solicitado.
+
 psql -h redshift-cluster.cbwssuxzxipm.us-east-2.redshift.amazonaws.com -U adminuser -d dsadb -p 5439 -f load_data.sql
+
 O comando acima irá criar e inserir o schema e os dados no banco Redshift
 
 
