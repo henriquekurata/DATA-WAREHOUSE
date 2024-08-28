@@ -1,8 +1,10 @@
 # ***Construção de um pipeline de dados com fonte de arquivos na máquina local e movimentação com o Airbyte para levar ao SGBD (PostgreSQL)***
 
 
+
 ## **Ferramentas usadas nesse lab**: 
 Docker, Airbyte, PostgreSQL e PgAdmin.
+
 
 
 ## **Resumo**: 
@@ -24,10 +26,12 @@ cd airbyte
 docker-compose up
 
 
+
 ### Criar imagem e container do banco de dados local
 Executar o comando abaixo:
 
 docker run --name dbdsa-lab4 -p 5432:5432 -e POSTGRES_USER=dsa -e POSTGRES_PASSWORD=dsa123 -e POSTGRES_DB=dsadb -d postgres
+
 
 
 ### Configurar o SGBD
@@ -36,6 +40,7 @@ Acessar o SGBD e criar:
 Name SGBD Pgadmin: Lab4
 
 Schema: dsadb
+
 
 
 ### Configuração de origem e destino no Airbyte
