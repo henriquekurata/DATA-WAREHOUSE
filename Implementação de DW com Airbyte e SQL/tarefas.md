@@ -11,11 +11,11 @@ Docker, PostgreSQL, pgAdmin, Airbyte e SQL.
 ## **Passos:** 
 * Criar e inserir fonte de dados no SGBD com SQL;
 * criar a conexão e o destino com Airbyte da fonte de dados (schema 1 = servidor 1) para a SA (schema 2 = servidor 2);
-* Linguegem SQL para criar a estrutura das tabelas do DW;
+* Linguagem SQL para criar a estrutura das tabelas do DW;
 * Linguagem SQL para inserir os dados no DW;
 * Utilizar o Group By para integridade dos resultados;
 * Adicionar métrica na tabela fato;
-* Criar View X Materialized View.
+* Criar View e Materialized View para melhorar a performance.
 
 
 
