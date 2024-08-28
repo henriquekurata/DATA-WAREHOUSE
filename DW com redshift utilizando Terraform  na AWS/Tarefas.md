@@ -409,6 +409,7 @@ nano redshift_role.tf
 
 
 ### provider.tf:
+
 ```
 provider "aws" {
   region = "us-east-2"
@@ -417,9 +418,10 @@ provider "aws" {
 
 
 ### redshift.tf:
+
 ```
 #Configura a Redshift VPC
-```
+
 resource "aws_vpc" "redshift_vpc" {
   cidr_block = "10.0.0.0/16"
 
