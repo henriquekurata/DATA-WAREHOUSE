@@ -2,7 +2,7 @@
 
 
 
-## **Ferramentas usadas nesse lab**: 
+## **Ferramentas**: 
 Docker, Airbyte, PostgreSQL e PgAdmin.
 
 
