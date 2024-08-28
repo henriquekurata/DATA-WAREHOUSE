@@ -40,12 +40,16 @@ Schema: dsadb
 
 ### Configuração de origem e destino no Airbyte
 Para a leitura de arquivos local é necessário realizar o mapeamento de volumes direto no CMD da máquina local com o comando: 
-docker cp C:\Arquivos\"Nome_Arquivo.csv" airbyte-server:\tmp\airbyte_local
+docker cp C:\Arquivos\"Nome_Arquivo.csv" airbyte-server:\tmp\airbyte_local (Executar no CMD local)
+
 Além disso, o arquivo deve estar na pasta raiz nomeada como "Arquivos"
 
 #Criando a conexão
+
 Acessar o Airbyte:
+
 User: airbyte
+
 Password: password
 
 Fazer as configurações da fonte, destino e criar a conexão entre ambos
