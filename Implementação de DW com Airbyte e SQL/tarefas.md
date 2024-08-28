@@ -23,19 +23,30 @@ Obs: Para esse processo ETL vamos utilizar linguagem SQL para servidores iguais 
 O servidor de origem dos dados deve receber a menor sobrecarga possível para nao comprometer os bancos transacionais, portanto a fonte estará no servidor 1 e a staging area e o destino no servidor 2.
 
 #Servidor 1: Fonte
+
+
 Name SGBD Pgadmin: dbdsafonte
+
 Schema:schema 1
+
 Container docker: dbdsafonte
 
+
 #Servidor 2: Stating Area (Airbyte):
+
 Name SGBD Pgadmin: dbdsadestino
+
 Schema: schema 2
+
 Container docker: airbyte
 
 
 #Servidor 2: Destino
+
 Name SGBD Pgadmin: dbdsadestino 
+
 Schema: schema 3
+
 Container docker: dbdsadestino
 
 
@@ -240,11 +251,12 @@ AND tb2.id_subcategoria = tb1.id_subcategoria;
 
 
 #Prepara os dados para a dimensão localidade
+
 #Campos necessários: id_localizacao, pais, regiao, estado, cidade 
+
 #Query:
 
 ```
-
 SELECT id_localidade, 
        pais, 
        regiao, 
