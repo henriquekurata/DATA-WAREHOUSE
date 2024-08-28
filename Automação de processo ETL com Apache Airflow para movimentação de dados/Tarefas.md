@@ -1,9 +1,13 @@
-***Será construído um pipeline de dados com Apache Airflow para leitura de arquivos da máquina local e carga de dados no PostgreSQL***
+# ***Será construído um pipeline de dados com Apache Airflow para leitura de arquivos da máquina local e carga de dados no PostgreSQL***
 
-**Ferramentas**:
+
+## **Ferramentas**:
+
 Docker, PostgreSQL, pgAdmin, Apache Airflow e Anaconda.
 
-**Resumo**: 
+
+## **Resumo**: 
+
 * Criar a estrutura das tabelas direto no DW com SQL;
 * Criar a connection no Airflow;
 * Criar a DAG;
@@ -12,16 +16,17 @@ Docker, PostgreSQL, pgAdmin, Apache Airflow e Anaconda.
 * Disparar a DAG.
 
 
-**Comandos**:
-#Configurar o Pgadmin:
+## **Comandos**:
+
+### Configurar o Pgadmin:
 Acessar o pgadmin e criar um banco de dados e schema com os nomes abaixo:
 Name SGBD Pgadmin: DW-Lab 6
 Schema: lab6
 
-#Criar a conncection no Airflow
+### Criar a conncection no Airflow
 Name: Lab6DW
 
-#Criação de tabelas:
+### Criação de tabelas:
 Dentro do schema, executar os scripts SQL:
 ```
 
@@ -107,7 +112,7 @@ Ex: "op_kwargs = {'params': {'csv_file_path': '/opt/airflow/dags/dados/DIM_CLIEN
 /opt/airflow/dags/dados = É a pasta criada no diretório raiz da máquina local
 
 
-# Job ETL - Apache Airflow (etl_dw_v5)
+### Job ETL - Apache Airflow (etl_dw_v5)
 ```
 #Imports
 import csv
@@ -512,11 +517,13 @@ tarefa_trunca_dim_transportadora = PostgresOperator(task_id = 'tarefa_trunca_dim
 tarefa_trunca_dim_entrega = PostgresOperator(task_id = 'tarefa_trunca_dim_entrega', postgres_conn_id = 'Lab6DW', sql = "TRUNCATE TABLE lab6.DIM_ENTREGA CASCADE", dag = dag_lab6_dsa)
 tarefa_trunca_dim_deposito = PostgresOperator(task_id = 'tarefa_trunca_dim_deposito', postgres_conn_id = 'Lab6DW', sql = "TRUNCATE TABLE lab6.DIM_DEPOSITO CASCADE", dag = dag_lab6_dsa)
 
-```
 
 # Upstream
 tarefa_trunca_tb_fato >> tarefa_trunca_dim_cliente >> tarefa_trunca_dim_pagamento >> tarefa_trunca_dim_frete >> tarefa_trunca_dim_data >> tarefa_trunca_dim_transportadora >> tarefa_trunca_dim_entrega >> tarefa_trunca_dim_deposito >> tarefa_carrega_dados_clientes >> tarefa_carrega_dados_transportadora >> tarefa_carrega_dados_deposito >> tarefa_carrega_dados_entrega >> tarefa_carrega_dados_frete >> tarefa_carrega_dados_pagamento >> tarefa_carrega_dados_data >> tarefa_carrega_dados_fatos
 
+
 # Bloco main
 if __name__ == "__main__":
     dag_lab6_dsa.cli()
+
+```
