@@ -18,18 +18,23 @@ Acessar o terminal e instalar o git: https://git-scm.com/download/win para Windo
  
 Executar os comandos abaixo:
 git clone https://github.com/airbytehq/airbyte.git
+
 cd airbyte
+
 docker-compose up
 
 
 ### Criar imagem e container do banco de dados local
 Executar o comando abaixo:
+
 docker run --name dbdsa-lab4 -p 5432:5432 -e POSTGRES_USER=dsa -e POSTGRES_PASSWORD=dsa123 -e POSTGRES_DB=dsadb -d postgres
 
 
 ### Configurar o SGBD
 Acessar o SGBD e criar:
+
 Name SGBD Pgadmin: Lab4
+
 Schema: dsadb
 
 
