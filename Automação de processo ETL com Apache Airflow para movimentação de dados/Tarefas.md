@@ -19,9 +19,8 @@ Docker, PostgreSQL, pgAdmin, Apache Airflow e Anaconda.
 ## **Comandos**:
 
 ### Configurar o Pgadmin:
-Acessar o pgadmin e criar um banco de dados e schema com os nomes abaixo:
-Name SGBD Pgadmin: DW-Lab 6
-Schema: lab6
+Acessar o pgadmin e criar um banco de dados e schema com os nomes:
+Name SGBD Pgadmin: DW-Lab 6 e Schema: lab6
 
 ### Criar a conncection no Airflow
 Name: Lab6DW
