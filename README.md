@@ -6,5 +6,5 @@
 * Docker na Engenharia de Dados
 * Linguagem SQL 
 * ETL com Apache Airflow e Airbyte
-* Banco de dados relaciona com PostgreSQL 
+* Banco de dados relacional com PostgreSQL 
 * Banco de dados em nuvem com Amazon Redshift
