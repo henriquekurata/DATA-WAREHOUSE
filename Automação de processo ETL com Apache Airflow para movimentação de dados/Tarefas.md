@@ -6,7 +6,7 @@
 Docker, PostgreSQL, pgAdmin, Apache Airflow e Anaconda.
 
 
-## **Resumo**: 
+## **Resumo**:  
 
 * Criar a estrutura das tabelas direto no DW com SQL;
 * Criar a connection no Airflow;
