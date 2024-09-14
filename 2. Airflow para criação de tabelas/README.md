@@ -1,9 +1,14 @@
 # ***Automatização com Apache Airflow para criar e inserir dados no PostgreSQL com linguagem Python***
 
+## **Descrição do Projeto:**
+Este projeto tem como objetivo criar e automatizar um pipeline de dados usando o **Apache Airflow** e **Python** para inserir dados no **PostgreSQL**. 
 
-## **Ferramentas**: 
-
-Docker, PostgreSQL, pgAdmin, Apache Airflow e Anaconda.
+## **Tecnologias Utilizadas**:
+- Docker;
+- PostgreSQL;
+- pgAdmin;
+- Apache Airflow;
+- Anaconda.
 
 ## **Resumo**: 
 * Criar imagem e container para o banco de dados do DW;
@@ -25,26 +30,26 @@ docker pull postgres
 docker run --name dbdsa -p 5433:5432 -e POSTGRES_USER=dsalabdw -e POSTGRES_PASSWORD=dsalabdw123 -e POSTGRES_DB=dwdb -d postgres
 
 
+
 ### Configurar o SGBD
 
-Acesse o Postgres pelo pgAdmin e crie:
-
+Acesse o Postgres pelo **pgAdmin** e crie:
 
 - Name SGBD Pgadmin: **Lab5**
+- Schema: **dsalabdw**
 
-Schema: dsalabdw
-
+---
 
 ### Preparando os Containers Docker para o Apache Airflow
 
-Criar uma pasta vazia na raiz com o nome "Airflow" na máquina local
+1. Crie uma pasta vazia na raiz com o nome `Airflow` na máquina local.
+2. Navegue até a pasta `Airflow` usando o terminal ou CMD.
+3. Siga a documentação oficial do Airflow no link:  
+   [Documentação do Airflow com Docker](https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html)
+   
+Execute os seguintes comandos dentro da pasta `Airflow`:
 
-Navegar pelo CMD até a pasta "Airflow"
 
-Seguir a documentação do link abaixo e executar os comandos dentro da pasta "Airflow": 
-https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html
-
-Comandos da documentação do link:
 
 curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.4.3/docker-compose.yaml'
 
