@@ -61,12 +61,19 @@ docker compose up airflow-init
 
 docker compose up
 
-Com a rede de container em execução, agora é só acessar a porta localhost:8080 com as credenciais abaixo:
 
-User: airflow e Password: airflow
+Agora, com a rede de containers em execução, acesse o painel do Airflow via `localhost:8080` usando as credenciais padrão:
+
+- **User**: airflow  
+- **Password**: airflow
+
+---
+
+### Configurando a Comunicação entre Containers (Docker PostgreSQL e Airflow)
+
+#### Passo 1: Listar as Redes Docker
 
 
-### Configurando a rede de containers Docker para o SGBD e o Airflow se comunicarem:
 
 Listar as redes Docker:
 
