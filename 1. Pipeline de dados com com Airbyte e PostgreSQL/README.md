@@ -1,9 +1,12 @@
-# ***Construção de um pipeline de dados com fonte de arquivos na máquina local e movimentação com o Airbyte para levar ao SGBD (PostgreSQL)***
+# ***Pipeline de Dados com Airbyte e PostgreSQL***
 
+## **Descrição do Projeto*:*
+Este projeto demonstra a implementação de um pipeline de dados usando Airbyte para integração de dados e PostgreSQL como o banco de dados destino. Ele abrange o design e a execução de processos de ETL (Extração, Transformação e Carregamento) para um Data Warehouse moderno.
 
-
-## **Ferramentas**: 
-Docker, Airbyte, PostgreSQL e PgAdmin.
+## **Tecnologias Utilizadas**: 
+Airbyte: Plataforma de integração de dados de código aberto.
+PostgreSQL: Banco de dados relacional.
+Docker: Containerização de serviços.
 
 
 
@@ -51,7 +54,7 @@ Além disso, o arquivo deve estar na pasta raiz nomeada como "Arquivos"
 
 
 
-### Criando a conexão
+### Criando a conexão 
 
 Acessar o Airbyte:
 
