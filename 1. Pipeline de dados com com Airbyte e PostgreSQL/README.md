@@ -1,6 +1,6 @@
 # ***Pipeline de Dados com Airbyte e PostgreSQL***
 
-## **Descrição do Projeto*:*
+## **Descrição do Projeto:**
 Este projeto demonstra a implementação de um pipeline de dados usando Airbyte para integração de dados e PostgreSQL como o banco de dados destino. Ele abrange o design e a execução de processos de ETL (Extração, Transformação e Carregamento) para um Data Warehouse moderno.
 
 ## **Tecnologias Utilizadas**: 
@@ -63,3 +63,11 @@ User: airbyte
 Password: password
 
 Fazer as configurações da fonte, destino e criar a conexão entre ambos
+
+
+## Contato
+
+Se tiver dúvidas ou sugestões sobre o projeto, entre em contato comigo:
+
+- [LinkedIn](https://www.linkedin.com/in/henrique-k-32967a2b5/)
+- [GitHub](https://github.com/henriquekurata?tab=overview&from=2024-09-01&to=2024-09-01)
