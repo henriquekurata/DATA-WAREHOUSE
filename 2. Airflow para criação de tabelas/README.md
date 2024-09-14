@@ -73,31 +73,38 @@ Agora, com a rede de containers em execução, acesse o painel do Airflow via `l
 
 #### Passo 1: Listar as Redes Docker
 
-
-
-Listar as redes Docker:
-
 docker network ls
 
-Inspecionar o container do banco de dados:
+
+#### Passo 2: Inspecionar o Container do Banco de Dados
+
 
 docker inspect dbdsa
 
-Extrair detalhes sobre a rede do container:
+
+#### Passo 3: Extrair Detalhes sobre a Rede do Container
+
 
 docker inspect dbdsa -f "{{json .NetworkSettings.Networks }}"
 
-Inspecionar a rede de todos os containers ao mesmo tempo:
+
+#### Passo 4: Inspecionar a Rede de Todos os Containers Simultaneamente
+
 
 docker ps --format '{{ .ID }} {{ .Names }} {{ json .Networks }}'
 
-Inspecionar a rede do Airflow e a rede padrão bridge:
+
+#### Passo 5: Inspecionar a Rede do Airflow e da Rede `bridge`
+
 
 docker network inspect airflow_default
 
 docker network inspect bridge
 
-Instalar ferramentas de rede no container para testar a conexão:
+
+#### Passo 6: Instalar Ferramentas de Rede no Container para Testar Conexão
+
+Dentro do container do PostgreSQL, execute os comandos:
 
 apt-get update
 
@@ -105,48 +112,43 @@ apt-get install net-tools
 
 apt-get install iputils-ping
 
-Fazer o teste de conexão entre o container dbdsa e o webserver do Apache Airflow:
+
+#### Passo 7: Fazer Teste de Conexão entre o Container `dbdsa` e o Webserver do Apache Airflow
+
 
 ifconfig
 
 ping
 
-Para deixar tudo no mesmo ambiente de rede é necessário seguir os passos abaixo:
 
-Desconectar o container da rede atual:
+#### Passo 8: Colocar o Banco de Dados na Mesma Rede do Airflow
+
+1. Desconectar o container `dbdsa` da rede `bridge`:
 
 docker network disconnect bridge dbdsa
 
-Conectar o container na rede desejada
+
+2. Conectar o container `dbdsa` na rede do Airflow:
 
 docker network connect airflow_default dbdsa
 
-Inspecionar a rede de todos os containers ao mesmo tempo:
+---
 
-docker ps --format '{{ .ID }} {{ .Names }} {{ json .Networks }}'
-
-Extrair detalhes sobre a rede do container:
-
-docker inspect dbdsa -f "{{json .NetworkSettings.Networks }}"
-
-Inspecionar a rede do Airflow:
-
-docker network inspect airflow_default
+### Criar a Conexão no Airflow
 
 Ao acessar o Apache Airflow é necessário criar a conexão (menu > connetcion): 
 
-Name connetion id: Lab5DW
+- **Name connetion id**: Lab5DW  
+- Preencher os campos com os seguintes valores:
+  - **Host**: Utilize o comando `ifconfig` para adicionar o INET (IP da máquina do SGBD)
+  - **Schema**: Nome do banco de dados
+  - **Port**: Porta do container Docker
 
-Observações para preenchimento da connection no Airflow:
-
-Host = usar comando ifconfig e add o INET (IP máquina do SGBD)
-
-Schema = Nome do banco de dados
-
-PORT = Porta do container Docker
+---
 
 
-## Job ETL (nome do arquivo: job_etl_lab5)
+
+## Job ETL (Arquivo: `job_etl_lab5`)
 ```
 
 # Imports
@@ -212,8 +214,10 @@ if __name__ == "__main__":
 
 ```
 
-Obs: Precisa levar o arquivo "job_etl_lab5" para a pasta "AIRFLOW" > "dag", ambas criadas na raiz da máquina local
-Assim que o arquivo estiver na pasta raiz a DAG automaticamente irá aparecer na interface do Airflow (DAG), na porta 8080
+### Observações Finais:
 
-Agora é só disparar a trigger da Dag no Airflow para que os dados sejam criados e inseridos no PostgreSQL
-
+* Coloque o arquivo job_etl_lab5 dentro da pasta AIRFLOW/dag criada na raiz da máquina local.
+  
+* Assim que o arquivo estiver na pasta correta, a DAG automaticamente irá aparecer na interface do Airflow (porta 8080).
+  
+* Dispare a trigger da DAG no Airflow para que os dados sejam criados e inseridos no PostgreSQL.
