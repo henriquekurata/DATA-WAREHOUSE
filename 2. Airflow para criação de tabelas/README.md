@@ -221,3 +221,12 @@ if __name__ == "__main__":
 * Assim que o arquivo estiver na pasta correta, a DAG automaticamente irá aparecer na interface do Airflow (porta 8080).
   
 * Dispare a trigger da DAG no Airflow para que os dados sejam criados e inseridos no PostgreSQL.
+
+
+---
+## Contato
+
+Se tiver dúvidas ou sugestões sobre o projeto, entre em contato comigo:
+
+- [LinkedIn](https://www.linkedin.com/in/henrique-k-32967a2b5/)
+- [GitHub](https://github.com/henriquekurata?tab=overview&from=2024-09-01&to=2024-09-01)
