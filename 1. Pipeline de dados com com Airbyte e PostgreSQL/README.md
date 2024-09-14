@@ -28,14 +28,14 @@ cd airbyte
 
 docker-compose up
 
-
+---
 
 ### Criar imagem e container do banco de dados local
 Executar o comando abaixo:
 
 docker run --name dbdsa-lab4 -p 5432:5432 -e POSTGRES_USER=dsa -e POSTGRES_PASSWORD=dsa123 -e POSTGRES_DB=dsadb -d postgres
 
-
+---
 
 ### Configurar o SGBD
 Acessar o SGBD e criar:
@@ -44,7 +44,7 @@ Name SGBD Pgadmin: Lab4
 
 Schema: dsadb
 
-
+---
 
 ### Configuração de origem e destino no Airbyte
 Para a leitura de arquivos local é necessário realizar o mapeamento de volumes direto no CMD da máquina local com o comando: 
@@ -52,7 +52,7 @@ docker cp C:\Arquivos\"Nome_Arquivo.csv" airbyte-server:\tmp\airbyte_local (Exec
 
 Além disso, o arquivo deve estar na pasta raiz nomeada como "Arquivos"
 
-
+---
 
 ### Criando a conexão 
 
