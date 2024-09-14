@@ -1,7 +1,7 @@
-# ***Automatização com Apache Airflow para criar e inserir dados no PostgreSQL com linguagem Python***
+# ***Pipeline de dados com Apache Airflow***
 
 ## **Descrição do Projeto:**
-Este projeto tem como objetivo criar e automatizar um pipeline de dados usando o **Apache Airflow** e **Python** para inserir dados no **PostgreSQL**. 
+Este projeto tem como objetivo criar e automatizar um pipeline de dados usando o **Apache Airflow** e **Python** para criar e inserir dados no **PostgreSQL**. 
 
 ## **Tecnologias Utilizadas**:
 - Docker;
