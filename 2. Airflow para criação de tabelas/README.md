@@ -4,11 +4,11 @@
 Este projeto tem como objetivo criar e automatizar um pipeline de dados usando o **Apache Airflow** e **Python** para criar e inserir dados no **PostgreSQL**. 
 
 ## **Tecnologias Utilizadas**:
-- Docker;
-- PostgreSQL;
-- pgAdmin;
-- Apache Airflow;
-- Anaconda.
+* Docker: Plataforma para criar e gerenciar containers, isolando os ambientes de execução do PostgreSQL e Apache Airflow;
+* PostgreSQL: Banco de dados relacional onde os dados são armazenados e manipulados;
+* pgAdmin: Interface gráfica para gerenciar e administrar o PostgreSQL;
+* Apache Airflow: Ferramenta de orquestração para automatizar e gerenciar pipelines de dados;
+* Anaconda: Distribuição de Python que facilita a gestão de pacotes e ambientes de desenvolvimento.
 
 ## **Resumo**: 
 * Criar imagem e container para o banco de dados do DW;
