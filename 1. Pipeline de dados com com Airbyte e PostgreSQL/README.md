@@ -4,9 +4,9 @@
 Este projeto demonstra a implementação de um pipeline de dados usando Airbyte para integração de dados e PostgreSQL como o banco de dados destino. Ele abrange o design e a execução de processos de ETL (Extração, Transformação e Carregamento) para um Data Warehouse moderno.
 
 ## **Tecnologias Utilizadas**: 
-Airbyte: Plataforma de integração de dados de código aberto.
-PostgreSQL: Banco de dados relacional.
-Docker: Containerização de serviços.
+* Airbyte: Plataforma de integração de dados de código aberto;
+* PostgreSQL: Banco de dados relacional;
+* Docker: Containerização de serviços.
 
 
 
