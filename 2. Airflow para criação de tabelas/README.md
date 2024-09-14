@@ -27,9 +27,10 @@ docker run --name dbdsa -p 5433:5432 -e POSTGRES_USER=dsalabdw -e POSTGRES_PASSW
 
 ### Configurar o SGBD
 
-Acesse o Postgres pelo pgAdmin e criar:
+Acesse o Postgres pelo pgAdmin e crie:
 
-Name SGBD Pgadmin: Lab5
+
+- Name SGBD Pgadmin: **Lab5**
 
 Schema: dsalabdw
 
