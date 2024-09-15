@@ -20,7 +20,7 @@ Pipeline de dados com Apache Airflow para leitura de arquivos da máquina local 
 - Criar a connection no Airflow.
 - Criar a DAG.
 - Inserir a DAG dentro da pasta raiz na máquina local do Airflow.
-- Inserir os arquivos CSV na máquina local dentro da pasta raiz (`AIRFLOW > dags > dados`).
+- Inserir os arquivos de dados CSV na máquina local dentro da pasta raiz (`AIRFLOW > dags > dados`).
 - Disparar a DAG.
 
 ## **Comandos**:
@@ -34,7 +34,7 @@ Acesse o pgAdmin e crie um banco de dados e schema com os seguintes nomes:
 
 ### Criar a conncection no Airflow
 - **Name**: Lab6DW
-- 
+
 ---
 
 ### Criar as estruturas das tabelas:
@@ -128,7 +128,7 @@ O caminho `/opt/airflow/dags/dados` é a pasta criada no diretório raiz da máq
 
 ### Job ETL - Apache Airflow (etl_dw_v5)
 
-```
+```python
 #Imports
 import csv
 import airflow
