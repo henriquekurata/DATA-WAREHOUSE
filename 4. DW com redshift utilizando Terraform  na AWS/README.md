@@ -1,11 +1,28 @@
-# ***Datawarehouse com Amazon Redshift e Terraform***
+# Projeto: ***Criação de um Data Warehouse na AWS Redshift com Terraform***
 
 ## **Descrição do Projeto:**
+Este projeto tem como objetivo a criação de um Data Warehouse utilizando o Amazon Redshift e automação da infraestrutura com Terraform. O projeto implementa uma solução escalável e segura para armazenar e consultar dados de vendas, estruturando um ambiente de Big Data em um cluster Redshift.
+
+Utilizando práticas de infraestrutura como código (IaC) com Terraform, o ambiente é provisionado de forma automatizada, incluindo a criação de uma VPC, subnets, security groups, e o cluster Redshift. Além disso, há a configuração de uma política IAM para garantir que o Redshift possa acessar dados no Amazon S3.
+
+Os dados de vendas são carregados no cluster Redshift e armazenados em tabelas dimensionais e factuais, permitindo a análise de grandes volumes de dados de forma rápida e eficiente. A modelagem de dados segue o padrão de Data Warehousing com tabelas fato e dimensões.
 
 
 ## **Tecnologias Utilizadas**:
-Docker, Terraform, AWS Redshift e AWS CLI.
+- **Amazon Redshift**: Data Warehouse escalável para armazenar e consultar grandes volumes de dados.
+- **Terraform**: Automação da infraestrutura em nuvem, provisionando e gerenciando recursos da AWS.
+- **Docker**: Criação de um ambiente isolado para desenvolvimento e execução dos scripts.
+- **AWS CLI**: Ferramenta de linha de comando para interagir com os serviços da AWS.
+- **PostgreSQL**: Interface para executar queries SQL no cluster Redshift.
 
+### Funcionalidades Implementadas:
+1. **Provisionamento da Infraestrutura**: Criação de uma VPC, subnets e segurança de rede utilizando Terraform.
+2. **Criação do Cluster Redshift**: Configuração do cluster de Redshift para armazenar os dados de vendas.
+3. **Carregamento de Dados**: Modelagem e inserção de dados nas tabelas `dim_cliente`, `dim_produto`, `dim_localidade`, e `fato_vendas` via script SQL.
+4. **Gerenciamento de Acesso IAM**: Criação de políticas IAM para permitir que o Redshift acesse buckets S3 para futura integração de dados.
+
+### Objetivo
+O projeto foi desenvolvido com o objetivo de criar uma solução eficiente de Data Warehouse, que possa ser replicada e escalada facilmente, garantindo flexibilidade e segurança na gestão e análise de grandes volumes de dados.
 
 
 ## **Resumo**: 
@@ -435,6 +452,10 @@ resource "aws_vpc" "redshift_vpc" {
     Name = "Redshift VPC"
   }
 }
+
+iam_roles = [aws_iam_role.redshift_role.arn]
+
+
 ```
 
 
