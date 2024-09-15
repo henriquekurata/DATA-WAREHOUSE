@@ -173,7 +173,7 @@ Ao acessar o Apache Airflow é necessário criar a conexão (menu > connetcion):
 
 
 ## Job ETL (Arquivo: `job_etl_lab5`)
-```
+```python
 
 # Imports
 import airflow
