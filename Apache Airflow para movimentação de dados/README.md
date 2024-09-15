@@ -1,34 +1,46 @@
-# ***Pipeline de dados com Apache Airflow para leitura de arquivos da máquina local e carga de dados no PostgreSQL***
+# ***Pipeline de dados com Apache Airflow***
+
+
+## **Descrição do Projeto:**
+Pipeline de dados com Apache Airflow para leitura de arquivos da máquina local e carga de dados no PostgreSQL.
 
 
 ## **Ferramentas**:
+- **Docker**: Utilizado para criar contêineres e orquestrar as diferentes partes do projeto, garantindo que todos os serviços (PostgreSQL, Airflow, etc.) rodem de forma isolada e replicável.
+- **PostgreSQL**: Banco de dados relacional usado como destino final do pipeline ETL, onde os dados processados são armazenados e organizados em um Data Warehouse (DW).
+- **pgAdmin**: Ferramenta de gerenciamento para PostgreSQL que permite criar e gerenciar o banco de dados, executar queries SQL e monitorar a execução do pipeline.
+- **Apache Airflow**: Plataforma de orquestração de workflows usada para agendar, monitorar e gerenciar as tarefas ETL do pipeline de forma programática, com DAGs (Directed Acyclic Graphs).
+- **Anaconda**: Distribuição de pacotes Python usada para configurar e gerenciar ambientes, facilitando a instalação de bibliotecas necessárias para o desenvolvimento do pipeline ETL.
 
-Docker, PostgreSQL, pgAdmin, Apache Airflow e Anaconda.
 
 
 ## **Resumo**:  
 
-* Criar a estrutura das tabelas direto no DW com SQL;
-* Criar a connection no Airflow;
-* Criar a DAG;
-* Inserir a DAG dentro da pasta raiz na máquina local do Airflow;
-* Inserir os arquivos csv na máquina local dentro da pasta raiz (AIRFLOW > dags > dados);
-* Disparar a DAG.
-
+- Criar a estrutura das tabelas direto no DW com SQL.
+- Criar a connection no Airflow.
+- Criar a DAG.
+- Inserir a DAG dentro da pasta raiz na máquina local do Airflow.
+- Inserir os arquivos CSV na máquina local dentro da pasta raiz (`AIRFLOW > dags > dados`).
+- Disparar a DAG.
 
 ## **Comandos**:
 
 ### Configurar o Pgadmin:
-Acessar o pgadmin e criar um banco de dados e schema com os nomes:
-Name SGBD Pgadmin: DW-Lab 6 e Schema: lab6
+Acesse o pgAdmin e crie um banco de dados e schema com os seguintes nomes:
+- **Name SGBD pgAdmin**: DW-Lab 6
+- **Schema**: lab6
+
+---
 
 ### Criar a conncection no Airflow
-Name: Lab6DW
+- **Name**: Lab6DW
+- 
+---
 
 ### Criar as estruturas das tabelas:
-Dentro do schema, executar os scripts SQL:
-```
+Dentro do schema, execute os scripts SQL a seguir:
 
+```sql
 CREATE TABLE lab6.DIM_CLIENTE
 (
     id_cliente int NOT NULL,
@@ -104,14 +116,18 @@ CREATE TABLE lab6.TB_FATO
 );
 
 ```
+--- 
 
-Obs: 
-Como estamos usando Docker, se faz necessário apontar o mapeamento de volumes para os arquivos das tabelas dimensões e fato no módulo python
-Ex: "op_kwargs = {'params': {'csv_file_path': '/opt/airflow/dags/dados/DIM_CLIENTE.csv'}}"
-/opt/airflow/dags/dados = É a pasta criada no diretório raiz da máquina local
+### Observação:
 
+Como estamos usando Docker, é necessário apontar o mapeamento de volumes para os arquivos das tabelas dimensões e fato no módulo Python, por exemplo: `op_kwargs = {'params': {'csv_file_path': '/opt/airflow/dags/dados/DIM_CLIENTE.csv'}}`.
+
+O caminho `/opt/airflow/dags/dados` é a pasta criada no diretório raiz da máquina local.
+
+---
 
 ### Job ETL - Apache Airflow (etl_dw_v5)
+
 ```
 #Imports
 import csv
@@ -526,3 +542,12 @@ if __name__ == "__main__":
     dag_lab6_dsa.cli()
 
 ```
+
+
+---
+## Contato
+
+Se tiver dúvidas ou sugestões sobre o projeto, entre em contato comigo:
+
+- [LinkedIn](https://www.linkedin.com/in/henrique-k-32967a2b5/)
+- [GitHub](https://github.com/henriquekurata?tab=overview&from=2024-09-01&to=2024-09-01)
