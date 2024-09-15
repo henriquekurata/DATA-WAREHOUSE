@@ -1,13 +1,34 @@
-# ***Pipeline de Dados com Airbyte e PostgreSQL***
+# Projeto: ***Pipeline de Dados com Airbyte e PostgreSQL***
 
 ## **Descrição do Projeto:**
-Este projeto demonstra a implementação de um pipeline de dados usando Airbyte para integração de dados e PostgreSQL como o banco de dados destino. Ele abrange o design e a execução de processos de ETL (Extração, Transformação e Carregamento) para um Data Warehouse moderno.
+Este projeto demonstra a implementação de um pipeline de dados utilizando **Airbyte** para integração de dados e **PostgreSQL** como banco de dados destino. O objetivo é desenhar e executar processos de ETL (Extração, Transformação e Carregamento) para um Data Warehouse moderno.
+
 
 ## **Tecnologias Utilizadas**: 
-* Airbyte: Plataforma de integração de dados de código aberto;
-* PostgreSQL: Banco de dados relacional;
-* Docker: Containerização de serviços.
+- **Airbyte**: Plataforma de integração de dados de código aberto que facilita a movimentação de dados entre fontes e destinos.
+- **PostgreSQL**: Banco de dados relacional para armazenamento e manipulação de dados.
+- **Docker**: Utilizado para containerização dos serviços, garantindo consistência e isolamento dos ambientes.
 
+
+## **Funcionalidades**
+
+1. **Criação e Configuração de Contêineres Docker**:
+   - **Airbyte**: Configuração e execução do contêiner Airbyte para integração de dados.
+   - **PostgreSQL**: Criação e execução do contêiner PostgreSQL para armazenamento dos dados.
+
+2. **Configuração do Banco de Dados**:
+   - Definição e criação do banco de dados e schema no PostgreSQL para armazenar os dados integrados.
+
+3. **Integração de Dados com Airbyte**:
+   - **Fonte de Dados**: Configuração do Airbyte para extrair dados de arquivos locais.
+   - **Destino de Dados**: Configuração do Airbyte para carregar os dados extraídos no PostgreSQL.
+
+4. **Gerenciamento de Arquivos Locais**:
+   - Mapeamento de volumes Docker para permitir a leitura de arquivos CSV da máquina local e a transferência desses arquivos para o Airbyte.
+
+5. **Interface de Configuração Airbyte**:
+   - Acesso à interface do Airbyte para configuração de conexões de origem e destino.
+   - Criação e gestão de pipelines de dados na interface do Airbyte.
 
 
 ## **Resumo**: 

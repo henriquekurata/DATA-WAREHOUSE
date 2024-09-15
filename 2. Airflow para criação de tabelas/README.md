@@ -1,7 +1,7 @@
-# ***Pipeline de dados com Apache Airflow***
+# Projeto: ***Pipeline de dados com Apache Airflow***
 
 ## **Descrição do Projeto:**
-Este projeto tem como objetivo criar e automatizar um pipeline de dados usando o **Apache Airflow** e **Python** para criar e inserir dados no **PostgreSQL**. 
+Este projeto tem como objetivo criar e automatizar um pipeline de dados usando o **Apache Airflow** e **Python** para criar e inserir dados no **PostgreSQL**. A solução inclui a configuração de contêineres Docker para isolar e gerenciar o ambiente do PostgreSQL e do Apache Airflow, além da implementação de uma DAG (Directed Acyclic Graph) para gerenciar o processo ETL (Extract, Transform, Load).
 
 ## **Tecnologias Utilizadas**:
 * Docker: Plataforma para criar e gerenciar containers, isolando os ambientes de execução do PostgreSQL e Apache Airflow;
@@ -9,6 +9,29 @@ Este projeto tem como objetivo criar e automatizar um pipeline de dados usando o
 * pgAdmin: Interface gráfica para gerenciar e administrar o PostgreSQL;
 * Apache Airflow: Ferramenta de orquestração para automatizar e gerenciar pipelines de dados;
 * Anaconda: Distribuição de Python que facilita a gestão de pacotes e ambientes de desenvolvimento.
+
+## **Principais Funcionalidades**
+### 1. **Criação e Configuração de Contêineres Docker**
+   - **PostgreSQL**: Configuração de um contêiner Docker para o banco de dados relacional PostgreSQL, incluindo a criação do banco de dados e schema necessários.
+   - **Apache Airflow**: Configuração de um contêiner Docker para o Apache Airflow, incluindo a criação de uma rede dedicada para comunicação entre contêineres e a configuração inicial do Airflow.
+
+### 2. **Gerenciamento de Contêineres com Docker**
+   - **Criação de Imagens e Contêineres**: Processos automatizados para criar e iniciar imagens e contêineres necessários para PostgreSQL e Airflow.
+   - **Comunicação entre Contêineres**: Configuração de redes e conexões para permitir que o Airflow se comunique com o banco de dados PostgreSQL.
+
+### 3. **Criação e Configuração de DAG no Apache Airflow**
+   - **Definição de DAG (Directed Acyclic Graph)**: Criação de uma DAG no Apache Airflow para gerenciar o pipeline de dados, incluindo tarefas de criação e inserção de dados.
+   - **Tarefas ETL (Extract, Transform, Load)**: Implementação de tarefas específicas para criar tabelas e inserir dados no PostgreSQL usando o operador `PostgresOperator` do Airflow.
+
+### 4. **Automatização do Pipeline de Dados**
+   - **Execução Programada**: Configuração da DAG para ser executada em um horário específico ou manualmente através da interface do Airflow.
+
+### 5. **Configuração e Monitoramento**
+   - **Interface Web do Airflow**: Acesso ao painel do Apache Airflow para monitorar a execução das DAGs, visualizar logs e gerenciar tarefas.
+   - **Criação de Conexões no Airflow**: Configuração de conexões no Airflow para se comunicar com o PostgreSQL, incluindo a definição de credenciais e detalhes de conexão.
+
+
+
 
 ## **Resumo**: 
 * Criar imagem e container para o banco de dados do DW;
@@ -18,6 +41,7 @@ Este projeto tem como objetivo criar e automatizar um pipeline de dados usando o
 * Criar a DAG;
 * Inserir a DAG dentro da pasta raiz na máquina local do Airflow;
 * Disparar a DAG.
+
 
 ## **Comandos**:
 

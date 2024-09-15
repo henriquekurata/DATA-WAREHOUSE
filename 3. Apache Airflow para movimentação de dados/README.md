@@ -1,17 +1,24 @@
-# ***Pipeline de dados com Apache Airflow***
+# Projeto: ***Pipeline de dados com Apache Airflow***
 
 
 ## **Descrição do Projeto:**
-Pipeline de dados com Apache Airflow para leitura de arquivos da máquina local e carga de dados no PostgreSQL.
-
+Este projeto consiste na construção de um pipeline de dados utilizando **Apache Airflow** para orquestrar o processo de ETL (Extract, Transform, Load), que realiza a leitura de arquivos CSV armazenados na máquina local e carrega esses dados em um banco de dados **PostgreSQL**. A arquitetura do pipeline foi desenhada para simular a automação de processos comuns em ambientes de Data Warehousing, utilizando contêineres **Docker** para garantir a escalabilidade e reprodutibilidade do ambiente, facilitando o gerenciamento de dependências e serviços.
 
 ## **Tecnologias Utilizadas**:
-- **Docker**: Utilizado para criar contêineres e orquestrar as diferentes partes do projeto, garantindo que todos os serviços (PostgreSQL, Airflow, etc.) rodem de forma isolada e replicável.
-- **PostgreSQL**: Banco de dados relacional usado como destino final do pipeline ETL, onde os dados processados são armazenados e organizados em um Data Warehouse (DW).
-- **pgAdmin**: Ferramenta de gerenciamento para PostgreSQL que permite criar e gerenciar o banco de dados, executar queries SQL e monitorar a execução do pipeline.
-- **Apache Airflow**: Plataforma de orquestração de workflows usada para agendar, monitorar e gerenciar as tarefas ETL do pipeline de forma programática, com DAGs (Directed Acyclic Graphs).
-- **Anaconda**: Distribuição de pacotes Python usada para configurar e gerenciar ambientes, facilitando a instalação de bibliotecas necessárias para o desenvolvimento do pipeline ETL.
 
+- **Apache Airflow**: Orquestrador responsável pela automação do pipeline de dados, gerenciamento das DAGs e monitoramento das tarefas.
+- **Docker**: Ferramenta de contêinerização usada para criar ambientes isolados para os serviços do projeto, como o PostgreSQL e o Airflow.
+- **PostgreSQL**: Banco de dados relacional que armazena os dados processados, representando o destino final do pipeline ETL.
+- **pgAdmin**: Interface de gerenciamento para o PostgreSQL, utilizada para a visualização e execução de queries no banco de dados.
+- **Python**: Linguagem de programação utilizada para implementar as tarefas de transformação e carga no Airflow, incluindo a interação com o PostgreSQL.
+- **Anaconda**: Distribuição de pacotes Python que facilita a criação e gerenciamento de ambientes, garantindo que todas as dependências necessárias para o projeto sejam facilmente configuradas.
+
+
+## Principais Funcionalidades
+1. **Automação de Tarefas**: Através de DAGs (Directed Acyclic Graphs), o Apache Airflow gerencia a execução das tarefas, incluindo leitura dos arquivos CSV, transformação dos dados e sua inserção em um banco de dados PostgreSQL.
+2. **Execução Escalonável**: O ambiente é configurado utilizando **Docker** para garantir que todos os serviços rodem em contêineres independentes, facilitando o gerenciamento de dependências e garantindo a consistência entre diferentes execuções.
+3. **Orquestração Programática**: O pipeline é totalmente controlado por código, o que permite a criação de tarefas dinâmicas, como a limpeza e carregamento de tabelas, por meio do Airflow. Além disso, o agendamento automático das execuções pode ser configurado com cron jobs.
+4. **Modelagem de Dados**: O projeto inclui a criação de um esquema de Data Warehouse, com tabelas dimensionais e de fato, proporcionando um exemplo prático de como armazenar dados de forma organizada para futuras consultas analíticas.
 
 
 ## **Resumo**:  
