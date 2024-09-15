@@ -1,36 +1,39 @@
 # ***Datawarehouse com Amazon Redshift e Terraform***
 
+## **Descrição do Projeto:**
 
 
-## **Ferramentas:**
-
+## **Tecnologias Utilizadas**:
 Docker, Terraform, AWS Redshift e AWS CLI.
 
 
 
-## **Passos:** 
+## **Resumo**: 
 * Acessar conta AWS e criar as credenciais de segurança;
 * Criar container docker para máquina cliente;
 * Instalar AWS CLI e Terraform no container;
 * Criar o arquivo Terraform no container;
-* Executar o terraform, aplicar infraestrutura e destruir (init, apply e destroy).
+* Executar o Terraform, aplicar infraestrutura e destruir (`init`, `apply`, `destroy`).
 
 
 
 ## **Comandos:**
 
-A conexão entre o Terraform e o Redshift será feito pelo AWS Cli, para isso funcionar será necessário criar as credenciais de segurança para aceso remoto (criar diretamente no console da AWS)
+A conexão entre o Terraform e o Redshift será feita pelo AWS CLI. Para isso funcionar, será necessário criar as credenciais de segurança para acesso remoto (criar diretamente no console da AWS).
+
+---
 
 ### Preparação da Máquina Cliente 
 
-#Cria um container Docker (na sua máquina local)
+#### 1. Criar um container Docker (na sua máquina local)
 
-docker run -dti --name dsa_projeto2 --rm ubuntu 
+```bash
+docker run -dti --name dsa_projeto2 --rm ubuntu
 
 
-### Instala utilitários 
+#### 2. Instalar utilitários 
 
-Executar os comandos abaixo no container criado:
+Execute os comandos abaixo no container criado:
 
 apt-get update
 
@@ -39,49 +42,46 @@ apt-get upgrade
 apt-get install curl nano wget unzip
 
 
-#Cria pasta de Downloads
+#### 3. Criar pasta de Downloads
 
 mkdir Downloads
 
 cd Downloads
 
 
-#Download do AWS CLI
+#### 4. Download do AWS CLI
 
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 
 
-#Unzip e install
+#### 5. Unzip e install
 
 unzip awscliv2.zip
 
 ./aws/install
 
 
-#Versão
+#### 6. Verificar a versão
 
 aws --version
 
 
-#Configura AWS CLI
+#### 7. Configurar AWS CLI
 
 aws configure
 
-Access key ID: coloque a sua chave
-
-Secret access key: coloque a sua chave
-
-Default region name: us-east-2
-
-Default output format: deixe em branco e pressione enter
+- Access key ID: coloque a sua chave
+- Secret access key: coloque a sua chave
+- Default region name: `us-east-2`
+- Default output format: deixe em branco e pressione enter
 
 
-#Teste
+#### 8. Testar a configuração
 
 aws s3 ls
 
 
-#Instala o Terraform
+#### 9.Instalar o Terraform
 
 apt-get update && apt-get install -y gnupg software-properties-common
 
@@ -94,15 +94,17 @@ apt update
 apt-get install terraform
 
 
-#Versão do Terraform
+#### 10. Verificar a versão do Terraform
 
 terraform -version
 
-Criar pasta no container Docker com o nome do projeto que está o arquivo main.tf:
+----
+
+### Criar pasta no container Docker com o nome do projeto que está o arquivo `main.tf`:
 
 Nesse caso: Container dsa_projeto2 > mkdir terraform-aws-hcl na pasta raiz do container (~)
 
-
+---
 
 ### Arquivo main.tf
 
@@ -151,7 +153,7 @@ resource "aws_instance" "web_server" {
 }
 
 ```
-
+---
 
 ### Executar o terraform, aplicar infraestrutura e destruir 
 
@@ -161,10 +163,11 @@ terraform apply (Validação para já executar o script)
 
 terraform destroy (Limpa tudo - Grupo de segurança e instância EC2)
 
+---
 
-### Arquivo main.tf
+### Arquivo main.tf para o Cluster Redshift
 
-#Preparando cluster Redshift para o DW usando infraestrutura como códico com Terraform
+#### Preparando cluster Redshift para o DW usando infraestrutura como códico com Terraform
 
 ```
 #Configura o Provedor AWS
@@ -267,17 +270,21 @@ resource "aws_redshift_cluster" "redshift_cluster" {
 
 ```
 
+---
+
 Acessando o Redshift: Redshift-cluster > Query data > Conectar ao banco de dados com nome e senha do arquivo main.tf
 
 
-
-# ***Deploy do DW na AWS com Terraform***
-
+---
 
 
-## **Passos:** 
 
-Já estão listados junto com os comandos.
+
+
+
+
+
+# ***Deploy do DW na AWS com Terraform - Parte 2***
 
 
 
@@ -291,9 +298,9 @@ Já estão listados junto com os comandos.
 
 ### 4-Criar o container Docker local.
 
-#Preparação da Máquina Cliente Para o Projeto 2
+Preparação da Máquina Cliente Para o Projeto 2
 
-#Cria um container Docker (na sua máquina local) com PostgreSQL e bibliotecas de conexão cliente:
+#### Cria um container Docker (na sua máquina local) com PostgreSQL e bibliotecas de conexão cliente:
 
 docker run --name cliente_dsa -p 5438:5432 -e POSTGRES_USER=dsadmin -e POSTGRES_PASSWORD=dsadmin123 -e POSTGRES_DB=dsdb -d postgres
 
@@ -698,7 +705,7 @@ O comando acima irá criar e inserir o schema e os dados no banco Redshift
 
 
 
-### 14- Edite o arquivo redshift.tf e acrescente a linha abaixo como mostrado nas aulas em vídeo para associar a role do S3 ao cluster Redshift.
+### 14- Edite o arquivo redshift.tf e acrescente a linha abaixo para associar a role do S3 ao cluster Redshift.
 
 iam_roles = [aws_iam_role.redshift_role.arn]
 
