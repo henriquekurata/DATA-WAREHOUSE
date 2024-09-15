@@ -5,7 +5,7 @@
 Pipeline de dados com Apache Airflow para leitura de arquivos da máquina local e carga de dados no PostgreSQL.
 
 
-## **Ferramentas**:
+## **Tecnologias Utilizadas**:
 - **Docker**: Utilizado para criar contêineres e orquestrar as diferentes partes do projeto, garantindo que todos os serviços (PostgreSQL, Airflow, etc.) rodem de forma isolada e replicável.
 - **PostgreSQL**: Banco de dados relacional usado como destino final do pipeline ETL, onde os dados processados são armazenados e organizados em um Data Warehouse (DW).
 - **pgAdmin**: Ferramenta de gerenciamento para PostgreSQL que permite criar e gerenciar o banco de dados, executar queries SQL e monitorar a execução do pipeline.
