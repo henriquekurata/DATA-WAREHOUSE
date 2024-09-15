@@ -27,7 +27,6 @@ A conexão entre o Terraform e o Redshift será feita pelo AWS CLI. Para isso fu
 
 #### 1. Criar um container Docker (na sua máquina local)
 
-```bash
 docker run -dti --name dsa_projeto2 --rm ubuntu
 
 
