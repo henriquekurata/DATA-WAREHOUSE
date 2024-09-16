@@ -480,6 +480,7 @@ AND tb4.id_produto = tb6.id_produto;
 ---
 
 Para não haver duplicidade entre as Surogate Keys, vamos utilizar o GROUP BY na tabela Fato Vendas:
+
 #Carrega a tabela fato_vendas
 
 ```SQL

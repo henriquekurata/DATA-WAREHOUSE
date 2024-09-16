@@ -1,10 +1,10 @@
-# Projeto: ***Pipeline de dados com Apache Airflow***
+# 🚀 ***Pipeline de dados com Apache Airflow***
 
 
 ## **Descrição do Projeto:**
 Este projeto consiste na construção de um pipeline de dados utilizando **Apache Airflow** para orquestrar o processo de ETL (Extract, Transform, Load), que realiza a leitura de arquivos CSV armazenados na máquina local e carrega esses dados em um banco de dados **PostgreSQL**. A arquitetura do pipeline foi desenhada para simular a automação de processos comuns em ambientes de Data Warehousing, utilizando contêineres **Docker** para garantir a escalabilidade e reprodutibilidade do ambiente, facilitando o gerenciamento de dependências e serviços.
 
-## **Tecnologias Utilizadas**:
+## 🛠️ **Tecnologias Utilizadas**:
 
 - **Apache Airflow**: Orquestrador responsável pela automação do pipeline de dados, gerenciamento das DAGs e monitoramento das tarefas.
 - **Docker**: Ferramenta de contêinerização usada para criar ambientes isolados para os serviços do projeto, como o PostgreSQL e o Airflow.
@@ -21,7 +21,7 @@ Este projeto consiste na construção de um pipeline de dados utilizando **Apach
 4. **Modelagem de Dados**: O projeto inclui a criação de um esquema de Data Warehouse, com tabelas dimensionais e de fato, proporcionando um exemplo prático de como armazenar dados de forma organizada para futuras consultas analíticas.
 
 
-## **Resumo**:  
+## 📋 **Descrição do Processo** 
 
 - Criar a estrutura das tabelas direto no DW com SQL.
 - Criar a connection no Airflow.

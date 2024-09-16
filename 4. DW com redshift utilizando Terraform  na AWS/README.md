@@ -1,4 +1,4 @@
-# Projeto: ***Criação de um Data Warehouse na AWS Redshift com Terraform***
+# 🚀 ***Criação de um Data Warehouse na AWS Redshift com Terraform***
 
 ## **Descrição do Projeto:**
 Este projeto tem como objetivo a criação de um Data Warehouse utilizando o Amazon Redshift e automação da infraestrutura com Terraform. O projeto implementa uma solução escalável e segura para armazenar e consultar dados de vendas, estruturando um ambiente de Big Data em um cluster Redshift.
@@ -8,7 +8,7 @@ Utilizando práticas de infraestrutura como código (IaC) com Terraform, o ambie
 Os dados de vendas são carregados no cluster Redshift e armazenados em tabelas dimensionais e factuais, permitindo a análise de grandes volumes de dados de forma rápida e eficiente. A modelagem de dados segue o padrão de Data Warehousing com tabelas fato e dimensões.
 
 
-## **Tecnologias Utilizadas**:
+## 🛠️ **Tecnologias Utilizadas**:
 - **Amazon Redshift**: Data Warehouse escalável para armazenar e consultar grandes volumes de dados.
 - **Terraform**: Automação da infraestrutura em nuvem, provisionando e gerenciando recursos da AWS.
 - **Docker**: Criação de um ambiente isolado para desenvolvimento e execução dos scripts.
@@ -25,7 +25,7 @@ Os dados de vendas são carregados no cluster Redshift e armazenados em tabelas 
 O projeto foi desenvolvido com o objetivo de criar uma solução eficiente de Data Warehouse, que possa ser replicada e escalada facilmente, garantindo flexibilidade e segurança na gestão e análise de grandes volumes de dados.
 
 
-## **Resumo**: 
+## 📋 **Descrição do Processo**
 * Acessar conta AWS e criar as credenciais de segurança;
 * Criar container docker para máquina cliente;
 * Instalar AWS CLI e Terraform no container;

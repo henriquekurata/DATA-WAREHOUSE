@@ -1,9 +1,9 @@
-# Projeto: ***Pipeline de dados com Apache Airflow***
+# 🚀 ***Pipeline de dados com Apache Airflow***
 
 ## **Descrição do Projeto:**
 Este projeto tem como objetivo criar e automatizar um pipeline de dados usando o **Apache Airflow** e **Python** para criar e inserir dados no **PostgreSQL**. A solução inclui a configuração de contêineres Docker para isolar e gerenciar o ambiente do PostgreSQL e do Apache Airflow, além da implementação de uma DAG (Directed Acyclic Graph) para gerenciar o processo ETL (Extract, Transform, Load).
 
-## **Tecnologias Utilizadas**:
+## 🛠️ **Tecnologias Utilizadas**:
 * Docker: Plataforma para criar e gerenciar containers, isolando os ambientes de execução do PostgreSQL e Apache Airflow;
 * PostgreSQL: Banco de dados relacional onde os dados são armazenados e manipulados;
 * pgAdmin: Interface gráfica para gerenciar e administrar o PostgreSQL;
@@ -33,7 +33,7 @@ Este projeto tem como objetivo criar e automatizar um pipeline de dados usando o
 
 
 
-## **Resumo**: 
+## 📋 **Descrição do Processo**
 * Criar imagem e container para o banco de dados do DW;
 * Criar imagem e containers para o Apache Airflow;
 * Configurar a comunicação entre as redes de containers (PostgreSQL e Airflow);
