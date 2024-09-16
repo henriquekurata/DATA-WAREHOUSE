@@ -17,6 +17,32 @@ Este projeto demonstra a construção de um **Data Warehouse (DW)** utilizando o
 
 ---
 
+## Principais Funcionalidades Implementadas:
+### Criação e Configuração do Ambiente:
+
+- Utilização do **Docker** para criação de containers de dois servidores PostgreSQL.
+- Configuração do **Airbyte** para sincronização de dados entre os servidores de origem e destino.
+
+### ETL - Extração e Carga:
+
+#### Fase 1 (Fonte para Staging Area):
+- A sincronização de dados entre o servidor de origem (fonte) e o servidor de destino (staging area) é feita utilizando o **Airbyte**.
+
+#### Fase 2 (Staging Area para Data Warehouse):
+- A transferência e transformação de dados é realizada com **SQL**, carregando dados da staging area para o **Data Warehouse**.
+
+### Modelagem do Data Warehouse:
+
+- Criação de tabelas dimensionais (`dim_cliente`, `dim_produto`, `dim_localidade`, `dim_tempo`) e da tabela fato (`fato_vendas`), usando **chaves substitutas** (*surrogate keys*).
+- Estruturas de **queries SQL** para transformar dados da Staging Area antes de carregá-los no DW, garantindo a consistência e integridade dos dados.
+
+### Carga de Dados e Otimização:
+
+- Utilização de **SQL views** e **materialized views** para melhorar o desempenho.
+- Processamento de dados com **Group By** e adição de métricas para geração de fatos de vendas no DW.
+
+---
+
 ## 📋 **Descrição do Processo**
 1. * Criar e inserir fonte de dados no SGBD com SQL;
 2. **Configurar o Airbyte** para sincronização de dados da fonte (schema 1 no servidor 1) para a **Staging Area** (schema 2 no servidor 2).
@@ -73,7 +99,7 @@ Container docker: dbdsadestino
 ---
 
 
-## **Comandos:**
+## ⚙️ **Comandos:**
 
 ### Criar o container para a fonte e o destino dos dados 
 

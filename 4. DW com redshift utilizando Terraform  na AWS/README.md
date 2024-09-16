@@ -626,7 +626,7 @@ touch load_data.sql
 nano load_data.sql
 
 Arquivo load_data.sql:
-```
+```SQL
 CREATE SCHEMA IF NOT EXISTS dsaschema;
 
 CREATE TABLE IF NOT EXISTS dsaschema.dim_cliente 

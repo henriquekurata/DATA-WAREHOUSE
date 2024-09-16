@@ -30,7 +30,7 @@ Este projeto consiste na construção de um pipeline de dados utilizando **Apach
 - Inserir os arquivos de dados CSV na máquina local dentro da pasta raiz (`AIRFLOW > dags > dados`).
 - Disparar a DAG.
 
-## **Comandos**:
+## ⚙️ **Comandos**:
 
 ### Configurar o Pgadmin:
 Acesse o pgAdmin e crie um banco de dados e schema com os seguintes nomes:

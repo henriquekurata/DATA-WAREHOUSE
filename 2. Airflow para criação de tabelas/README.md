@@ -43,7 +43,7 @@ Este projeto tem como objetivo criar e automatizar um pipeline de dados usando o
 * Disparar a DAG.
 
 
-## **Comandos**:
+## ⚙️ **Comandos**:
 
 ### Preparando o Container Docker Para o Banco de Dados do DW
 

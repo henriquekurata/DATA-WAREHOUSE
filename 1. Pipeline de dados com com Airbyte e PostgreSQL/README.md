@@ -38,7 +38,7 @@ Este projeto demonstra a implementação de um pipeline de dados utilizando **Ai
 * Acessar o Airbyte http://localhost:8000, fazer a extração dos dados da fonte (máquina local) e carga para o destino (SGBD).
 
 
-## **Comandos**:
+## ⚙️ **Comandos**:
 ### Criar imagem e container do Airbyte no Docker
 Acessar o terminal e instalar o git: https://git-scm.com/download/win para Windows
  
