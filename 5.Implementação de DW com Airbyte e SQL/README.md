@@ -1,23 +1,35 @@
-# ***Implementação de DW no PostgreSQL e processo ETL utilizando Airbyte/SQL***
+# 🚀 ***Implementação de Data Warehouse com PostgreSQL e ETL com Airbyte e SQL***
+
+---
+
+## **Descrição do Projeto:**
+Este projeto demonstra a construção de um **Data Warehouse (DW)** utilizando o **PostgreSQL**, e o desenvolvimento de um **processo ETL** eficiente que integra **Airbyte** e **SQL** para transferência e transformação de dados entre diferentes servidores. O foco principal está na **otimização da carga de dados** e na criação de um **modelo físico** robusto.
 
 
+---
 
-## **Ferramentas:**
+## 🛠️ **Ferramentas Utilizadas**
+- **Docker**: Criação dos containers para os servidores de dados;
+- **PostgreSQL**: Banco de dados relacional utilizado para o DW;
+- **pgAdmin**: Interface para gerenciar o PostgreSQL;
+- **Airbyte**: Pipeline de ETL para integração entre servidores;
+- **SQL**: Manipulação e transformação de dados.
 
-Docker, PostgreSQL, pgAdmin, Airbyte e SQL.
+---
+
+## 📋 **Descrição do Processo**
+1. * Criar e inserir fonte de dados no SGBD com SQL;
+2. **Configurar o Airbyte** para sincronização de dados da fonte (schema 1 no servidor 1) para a **Staging Area** (schema 2 no servidor 2).
+3. * Utilizar linguagem SQL para **Estruturar o DW** no servidor de destino (schema 3).
+4. * Utilizar linguagem SQL para **inserir e fazer a Transformação de dados** via SQL no servidor de destino (schema 3).
+5. * Utilizar o Group By para integridade dos resultados;
+6. * Adicionar métrica na tabela fato;
+7. * Utilização de **Views** e **Materialized Views** para melhorar a performance.
 
 
+---
 
-## **Passos:** 
-* Criar e inserir fonte de dados no SGBD com SQL;
-* criar a conexão e o destino com Airbyte da fonte de dados (schema 1 = servidor 1) para a SA (schema 2 = servidor 2);
-* Linguagem SQL para criar a estrutura das tabelas do DW;
-* Linguagem SQL para inserir os dados no DW;
-* Utilizar o Group By para integridade dos resultados;
-* Adicionar métrica na tabela fato;
-* Criar View e Materialized View para melhorar a performance.
-
-
+## 📂 **Estrutura do Projeto**
 
 Obs: Para esse processo ETL vamos utilizar linguagem SQL para servidores iguais e o Airbyte para servidores distintos.
 O servidor de origem dos dados deve receber a menor sobrecarga possível para nao comprometer os bancos transacionais, portanto a fonte estará no servidor 1 e a staging area e o destino no servidor 2.
@@ -50,6 +62,16 @@ Schema: schema 3
 Container docker: dbdsadestino
 
 
+### **ETL Fase 1 (Fonte para Staging Area)**
+
+- Sincronização de dados da **Fonte** para a **Staging Area** utilizando **Airbyte**.
+
+### **ETL Fase 2 (Staging Area para DW)**
+
+- Transformação e carga de dados da **Staging Area** para o **DW** usando **SQL**.
+
+---
+
 
 ## **Comandos:**
 
@@ -59,9 +81,11 @@ docker run --name dbdsafonte -p 5433:5432 -e POSTGRES_USER=dbadmin -e POSTGRES_P
 
 docker run --name dbdsadestino -p 5434:5432 -e POSTGRES_USER=dbadmin -e POSTGRES_PASSWORD=dbadmin123 -e POSTGRES_DB=postgresDB -d postgres
 
+---
+
 ### Criar as tabelas da fonte diretamente no SGBD (schema 1) com SQL
 
-```
+```SQL
 CREATE TABLE schema1.ft_categorias (
     id_categoria SERIAL PRIMARY KEY,
     nome_categoria VARCHAR(255) NOT NULL
@@ -202,6 +226,7 @@ FROM dados;
 
 ```
 
+---
 
 ### ETL Fase 1 (Fonte para a Staging Area - Schema 1 para Schema 2 - Será feito com Airbyte)
 
@@ -212,6 +237,7 @@ Configurar a fonte > destino > conexão > Fazer o Sync
 Obs: Para a criação da conexão no Airbyte é importante utilizar as portas externas, pois o container docker do Airbyte está em uma rede diferente do container Destino.
 
 
+---
 
 ### ETL Fase 2 (Staging Area para o DW - Schema  2 para Schema 3 - Será feito com linguagem SQL)
 
@@ -221,7 +247,7 @@ Obs: Para a criação da conexão no Airbyte é importante utilizar as portas ex
 
 #Query:
 
-```
+```SQL
 SELECT id_cliente, 
        nome_cliente, 
        nome_tipo
@@ -237,7 +263,7 @@ WHERE tb2.id_tipo = tb1.id_tipo;
 
 #Query:
 
-```
+```SQL
 
 SELECT id_produto, 
        nome_produto, 
@@ -256,7 +282,7 @@ AND tb2.id_subcategoria = tb1.id_subcategoria;
 
 #Query:
 
-```
+```SQL
 SELECT id_localidade, 
        pais, 
        regiao, 
@@ -285,17 +311,18 @@ WHERE tb2.id_cidade = tb1.id_cidade;
 
 #Query:
 
-```
+```SQL
 SELECT EXTRACT(YEAR FROM d)::INT, 
        EXTRACT(MONTH FROM d)::INT, 
        EXTRACT(DAY FROM d)::INT, d::DATE
 FROM generate_series('2020-01-01'::DATE, '2024-12-31'::DATE, '1 day'::INTERVAL) d;
 ```
 
+---
 
 #Modelo físico (Criação de estruturas das tabelas com Surrogate Keys)
 
-```
+```SQL
 -- Tabela Dimensão Cliente
 CREATE TABLE schema3.dim_cliente (
   sk_cliente SERIAL PRIMARY KEY,
@@ -355,7 +382,7 @@ CREATE TABLE schema3.fato_vendas (
 
 #Carrega a tabela dim_tempo
 
-``` 
+``` SQL
 
 INSERT INTO schema3.dim_tempo (ano, mes, dia, data_completa)
 SELECT EXTRACT(YEAR FROM d)::INT, 
@@ -366,7 +393,7 @@ FROM generate_series('2020-01-01'::DATE, '2024-12-31'::DATE, '1 day'::INTERVAL) 
 
 #Carrega a tabela dim_cliente no DW a partir da Staging Area
 
-```
+```SQL
 INSERT INTO schema3.dim_cliente (id_cliente, nome, tipo)
 SELECT id_cliente, 
        nome_cliente, 
@@ -377,7 +404,7 @@ WHERE tb2.id_tipo = tb1.id_tipo;
 
 #Carrega a tabela dim_produto no DW a partir da Staging Area
 
-```
+```SQL
 INSERT INTO schema3.dim_produto (id_produto, nome_produto, categoria, subcategoria)
 SELECT id_produto, 
        nome_produto, 
@@ -390,7 +417,7 @@ AND tb2.id_subcategoria = tb1.id_subcategoria;
 
 #Carrega a tabela dim_localidade no DW a partir da Staging Area
 
-```
+```SQL
 INSERT INTO schema3.dim_localidade (id_localidade, pais, regiao, estado, cidade)
 SELECT id_localidade, 
 	   pais, 
@@ -416,7 +443,7 @@ WHERE tb2.id_cidade = tb1.id_cidade;
 #Carga de dados na tabela Fato:
 Como a origem não tem as surrogate Keys, devemos fazer joins pelo Id de cada tabela para o cálculo das métricas
 
-```
+```SQL
 INSERT INTO schema3.fato_vendas (sk_produto, 
 	                              sk_cliente, 
 	                              sk_localidade, 
@@ -450,11 +477,12 @@ AND tb3.id_localidade = tb7.id_localidade
 AND tb4.id_produto = tb6.id_produto;
 
 ```
+---
 
 Para não haver duplicidade entre as Surogate Keys, vamos utilizar o GROUP BY na tabela Fato Vendas:
 #Carrega a tabela fato_vendas
 
-```
+```SQL
 INSERT INTO schema3.fato_vendas (sk_produto, 
 	                            sk_cliente, 
 	                            sk_localidade, 
@@ -488,24 +516,25 @@ AND tb3.id_localidade = tb7.id_localidade
 AND tb4.id_produto = tb6.id_produto
 GROUP BY sk_produto, sk_cliente, sk_localidade, sk_tempo;
 ```
+---
 
 ### Adicionando uma nova métrica na tabela Fato:
 #Limpa a tabela
 
-```
+```SQL
 TRUNCATE TABLE schema3.fato_vendas;
 ```
 
 #Adiciona a nova coluna
 
-```
+```SQL
 ALTER TABLE IF EXISTS schema3.fato_vendas
     ADD COLUMN resultado numeric(10, 2) NOT NULL;
 ```
 
 #Carrega a tabela fato
 
-```
+```SQL
 INSERT INTO schema3.fato_vendas (sk_produto, 
                                 sk_cliente, 
                                 sk_localidade, 
@@ -542,13 +571,14 @@ AND tb3.id_localidade = tb7.id_localidade
 AND tb4.id_produto = tb6.id_produto
 GROUP BY sk_produto, sk_cliente, sk_localidade, sk_tempo;
 ```
+---
 
 ### Usando Materialized View para melhorar a performance das consultas:
 #View e View Materializada
 
 #Cria uma view (Grava a Query, porém o plano de execução ainda é realizado)
 
-```
+```SQL
 CREATE VIEW schema3.vw_relatorio
 AS
 SELECT estado, 
@@ -575,7 +605,7 @@ SELECT * FROM schema3.vw_relatorio
 
 ### Cria uma view materializada (Com a MV não há execução de query, portanto a performance melhora)
 
-```
+```SQL
 CREATE MATERIALIZED VIEW schema3.mv_relatorio AS
 SELECT estado, 
        categoria, 
@@ -596,3 +626,11 @@ ORDER BY estado, categoria, tipo, hora;
 
 SELECT * FROM schema3.mv_relatorio;
 ``` 
+
+---
+## Contato
+
+Se tiver dúvidas ou sugestões sobre o projeto, entre em contato comigo:
+
+- [LinkedIn](https://www.linkedin.com/in/henrique-k-32967a2b5/)
+- [GitHub](https://github.com/henriquekurata?tab=overview&from=2024-09-01&to=2024-09-01)

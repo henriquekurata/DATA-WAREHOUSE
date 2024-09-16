@@ -740,3 +740,12 @@ iam_roles = [aws_iam_role.redshift_role.arn]
 
 
 ### 17- Quando terminar o trabalho, destrua a infra com o comando: terraform destroy.
+
+
+---
+## Contato
+
+Se tiver dúvidas ou sugestões sobre o projeto, entre em contato comigo:
+
+- [LinkedIn](https://www.linkedin.com/in/henrique-k-32967a2b5/)
+- [GitHub](https://github.com/henriquekurata?tab=overview&from=2024-09-01&to=2024-09-01)
