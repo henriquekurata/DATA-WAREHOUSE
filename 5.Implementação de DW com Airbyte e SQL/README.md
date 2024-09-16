@@ -659,5 +659,5 @@ SELECT * FROM schema3.mv_relatorio;
 
 Se tiver dúvidas ou sugestões sobre o projeto, entre em contato comigo:
 
-- [LinkedIn](https://www.linkedin.com/in/henrique-k-32967a2b5/)
-- [GitHub](https://github.com/henriquekurata?tab=overview&from=2024-09-01&to=2024-09-01)
+- 💼 [LinkedIn](https://www.linkedin.com/in/henrique-k-32967a2b5/)
+- 🐱 [GitHub](https://github.com/henriquekurata?tab=overview&from=2024-09-01&to=2024-09-01)
