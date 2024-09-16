@@ -44,13 +44,13 @@ Este projeto demonstra a construção de um **Data Warehouse (DW)** utilizando o
 ---
 
 ## 📋 **Descrição do Processo**
-1. * Criar e inserir fonte de dados no SGBD com SQL;
+1. Criar e inserir fonte de dados no SGBD com SQL;
 2. **Configurar o Airbyte** para sincronização de dados da fonte (schema 1 no servidor 1) para a **Staging Area** (schema 2 no servidor 2).
-3. * Utilizar linguagem SQL para **Estruturar o DW** no servidor de destino (schema 3).
-4. * Utilizar linguagem SQL para **inserir e fazer a Transformação de dados** via SQL no servidor de destino (schema 3).
-5. * Utilizar o Group By para integridade dos resultados;
-6. * Adicionar métrica na tabela fato;
-7. * Utilização de **Views** e **Materialized Views** para melhorar a performance.
+3. Linguagem SQL para **Estruturar o DW** no servidor de destino (schema 3).
+4. Linguagem SQL para **inserir e fazer a Transformação de dados** via SQL no servidor de destino (schema 3).
+5. Utilizar o Group By para integridade dos resultados;
+6. Adicionar métrica na tabela fato;
+7. Utilização de **Views** e **Materialized Views** para melhorar a performance.
 
 
 ---
@@ -603,7 +603,7 @@ GROUP BY sk_produto, sk_cliente, sk_localidade, sk_tempo;
 ### Usando Materialized View para melhorar a performance das consultas:
 #View e View Materializada
 
-#Cria uma view (Grava a Query, porém o plano de execução ainda é realizado)
+#### Cria uma view (Grava a Query, porém o plano de execução ainda é realizado)
 
 ```SQL
 CREATE VIEW schema3.vw_relatorio
@@ -630,7 +630,7 @@ SELECT * FROM schema3.vw_relatorio
 ```
 
 
-### Cria uma view materializada (Com a MV não há execução de query, portanto a performance melhora)
+#### Cria uma view materializada (Com a MV não há execução de query, portanto a performance melhora)
 
 ```SQL
 CREATE MATERIALIZED VIEW schema3.mv_relatorio AS
