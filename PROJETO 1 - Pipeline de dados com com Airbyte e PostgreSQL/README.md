@@ -49,7 +49,7 @@ cd airbyte
 
 docker-compose up
 
----
+
 
 ### Criar imagem e container do banco de dados local
 Executar o comando abaixo:
